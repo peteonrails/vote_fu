@@ -14,11 +14,10 @@ Gem::Specification.new do |s|
               "generators/voteable",
               "generators/voteable/voteable_generator.rb",
               "generators/voteable/templates",
-              "generators/voteable/templates/add_users_migration.rb",
+              "generators/voteable/templates/vote.rb",
               "generators/voteable/templates/migration.rb",
               "init.rb",
               "lib/acts-as-voteable.rb",
-              "lib/vote.rb",
               "lib/acts_as_voter.rb",
               "rails/init.rb",
               "test/voteable_test.rb"
