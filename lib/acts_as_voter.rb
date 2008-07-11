@@ -9,8 +9,8 @@ module PeteOnRails
 
       module ClassMethods
         def acts_as_voter
-          has_many :votes, :as => :voter, :dependent => true
-          include PeteOnRails::Acts::Voter::InstanceMethods
+          has_many :votes, :as => :voter, :dependent => :nullify  # If a voting entity is deleted, keep the votes. 
+            include PeteOnRails::Acts::Voter::InstanceMethods
           extend  PeteOnRails::Acts::Voter::SingletonMethods
         end
       end
