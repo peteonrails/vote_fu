@@ -1,0 +1,26 @@
+Gem::Specification.new do |s|
+  s.name = "vote_fu"
+  s.version = "0.0.1"
+  s.date = "2008-07-10"
+  s.summary = "Voting for ActiveRecord with multiple vote sources and advanced features."
+  s.email = "pete@peteonrails.com"
+  s.homepage = "http://blog.peteonrails.com/vote-fu"
+  s.description = "VoteFu provides the ability to have multiple voting entities on an arbitrary number of models in ActiveRecord."
+  s.has_rdoc = false
+  s.authors = ["Peter Jackson", "Cosmin Radoi"]
+  s.files = [ "CHANGELOG",
+              "MIT-LICENSE",
+              "README",
+              "generators/voteable",
+              "generators/voteable/voteable_generator.rb",
+              "generators/voteable/templates",
+              "generators/voteable/templates/add_users_migration.rb",
+              "generators/voteable/templates/migration.rb",
+              "init.rb",
+              "lib/acts-as-voteable.rb",
+              "lib/vote.rb",
+              "lib/acts_as_voter.rb",
+              "rails/init.rb",
+              "test/voteable_test.rb"
+              "uninstall.rb" ]
+end
