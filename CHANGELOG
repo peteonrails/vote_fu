@@ -1,0 +1,5 @@
+== 2008-07-10
+* Added a generator class for the migration. 
+* Implemented rails/init.rb
+* Implemented capability to use any model as the initiator of votes.
+* Implemented acts_as_voter methods.

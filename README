@@ -1,0 +1,45 @@
+vote_fu
+==============
+
+Allows an arbitrary number of entites (including Users) to vote on models. Adapted from act_as_voteable. Differences from acts_as_voteable include: 
+
+1. You can specify the model name that initiates votes. 
+2. You can, with a little tuning, have more than one entity type vote on more than one model type. 
+3. Adds "acts_as_voter" behavior to the initiator of votes.
+
+== Resources
+
+Install
+ * Run the following command:
+	./script/plugin install git://github.com/peteonrails/vote_fu.git 
+	
+ * Create a new rails migration using the generator:
+	./script/generate voteable
+	
+ 
+== Usage
+ 
+ * Make your ActiveRecord model act as voteable.
+ 
+ class Model < ActiveRecord::Base
+ 	acts_as_voteable
+ end
+
+ * Make your ActiveRecord model(s) that vote act as voter.
+
+ class User < ActiveRecord::Base
+ 	acts_as_voter
+ end
+
+ class Robot < ActiveRecord::Base
+ 	acts_as_voter
+ end
+
+== Credits
+
+Xelipe - This plugin is heavily influenced by Acts As Commentable.
+
+== More
+
+Documentation from the original acts_as_voteable plugin
+http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
