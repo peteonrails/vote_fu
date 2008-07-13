@@ -1,13 +1,12 @@
 class Vote < ActiveRecord::Base
 
+  named_scope :for_voter,    lambda { |*args| {:conditions => ["voter_id = ? AND voter_type = ?", args.first.id, args.first.type.name]} }
+  named_scope :for_voteable, lambda { |*args| {:conditions => ["voteable_id = ? AND voteable_type = ?", args.first.id, args.first.type.name]} }
+  named_scope :recent,       lambda { |*args| {:conditions => ["created_at > ?", (args.first || 2.weeks.ago).to_s(:db)]} }
+  named_scope :descending, :order => "created_at DESC"
+
   # NOTE: Votes belong to the "voteable" interface, and also to voters
   belongs_to :voteable, :polymorphic => true
   belongs_to :voter,    :polymorphic => true
 
-  def self.find_votes_cast_by_voter(voter)
-    find(:all,
-      :conditions => ["voter_id = ? AND voter_type = ?", voter.id, voter.type.name],
-      :order => "created_at DESC"
-    )
-  end
 end

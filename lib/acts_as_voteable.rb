@@ -9,9 +9,9 @@ module Juixe
 
       module ClassMethods
         def acts_as_voteable
-          has_many :votes, :as => :voteable, :dependent => true
+          has_many :votes, :as => :voteable, :dependent => :nullify
           include Juixe::Acts::Voteable::InstanceMethods
-          extend Juixe::Acts::Voteable::SingletonMethods
+          extend  Juixe::Acts::Voteable::SingletonMethods
         end
       end
       
@@ -29,19 +29,17 @@ module Juixe
       # This module contains instance methods
       module InstanceMethods
         def votes_for
-          votes = Vote.find(:all, :conditions => [
-            "voteable_id = ? AND voteable_type = ? AND vote = TRUE",
-            id, self.type.name
+          Vote.count(:all, :conditions => [
+            "voteable_id = ? AND voteable_type = ? AND vote = ?",
+            id, self.type.name, true
           ])
-          votes.size
         end
         
         def votes_against
-          votes = Vote.find(:all, :conditions => [
-            "voteable_id = ? AND voteable_type = ? AND vote = FALSE",
-            id, self.type.name
+          Vote.count(:all, :conditions => [
+            "voteable_id = ? AND voteable_type = ? AND vote = ?",
+            id, self.type.name, false
           ])
-          votes.size
         end
         
         # Same as voteable.votes.size
