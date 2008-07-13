@@ -54,6 +54,7 @@ module PeteOnRails
           vote = Vote.new(:vote => vote)
           voteable.votes << vote
           self.votes     << vote
+          vote.save
         end
 
       end
