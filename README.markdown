@@ -44,12 +44,18 @@ _____
 
 ### To cast a vote for a Model you can do the following:
 
+#### Shorthand syntax
+	voter.vote_for(voteable)     # Adds a +1 vote
+	voter.vote_against(voteable) # Adds a -1 vote
+	voter.vote(voteable, t_or_f) # Adds either +1 or -1 vote true => +1, false => -1
+	
+#### ActsAsVoteable syntax
+The old acts\_as\_voteable syntax is still supported:
+
     vote = Vote.new(:vote => true)
     m    = Model.find(params[:id])
     m.votes    << vote
     user.votes << vote
-
-There will be new functionality coming soon to make casting a vote simpler. 
 
 ### Querying votes
 
