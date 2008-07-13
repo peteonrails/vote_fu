@@ -53,7 +53,7 @@ There will be new functionality coming soon to make casting a vote simpler.
 
 ### Querying votes
 
-ActiveRecord models that act as voteable can be queried for the positive votes, negative votes, and a total vote count by using the votes_for, votes_against, and votes_count methods respectively. Here is an example:
+ActiveRecord models that act as voteable can be queried for the positive votes, negative votes, and a total vote count by using the votes\_for, votes\_against, and votes\_count methods respectively. Here is an example:
 
     positiveVoteCount = m.votes_for
     negativeVoteCount = m.votes_against
