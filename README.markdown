@@ -69,6 +69,15 @@ And because the Vote Fu plugin will add the has_many votes relationship to your 
 
     allVotes = m.votes
 
+The mixin also provides these methods: 
+
+    voter.voted_for?(voteable)  # True if the voter voted for this object. 
+	voter.vote_count([true|false|"all"]) # returns the count of +1, -1, or all votes 
+
+	voteable.voted_by?(voter) # True if the voter voted for this object. 
+	@voters = voteable.voters_who_voted
+
+
 #### Named Scopes
 
 The Vote model has several named scopes you can use to find vote details: 
