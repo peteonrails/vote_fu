@@ -24,14 +24,14 @@ module Juixe
         def votes_for
           Vote.count(:all, :conditions => [
             "voteable_id = ? AND voteable_type = ? AND vote = ?",
-            id, self.type.name, true
+            id, self.class.name, true
           ])
         end
         
         def votes_against
           Vote.count(:all, :conditions => [
             "voteable_id = ? AND voteable_type = ? AND vote = ?",
-            id, self.type.name, false
+            id, self.class.name, false
           ])
         end
         
@@ -52,7 +52,7 @@ module Juixe
           rtn = false
           if voter
             self.votes.each { |v|
-              rtn = true if (voter.id == v.voter_id && voter.type.name == v.voter_type)
+              rtn = true if (voter.id == v.voter_id && voter.class.name == v.voter_type)
             }
           end
           rtn

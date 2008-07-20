@@ -8,5 +8,7 @@ class Vote < ActiveRecord::Base
   # NOTE: Votes belong to the "voteable" interface, and also to voters
   belongs_to :voteable, :polymorphic => true
   belongs_to :voter,    :polymorphic => true
+  
+  attr_accessible :vote
 
 end
