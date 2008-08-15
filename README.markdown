@@ -59,6 +59,32 @@ The old acts\_as\_voteable syntax is still supported:
 
 ### Querying votes
 
+#### Tallying: 
+
+The acts\_as\_voteable mixin supports the +tally+ method to count votes for all Voteables of a certain type: 
+
+    @item_votes = Item.tally(
+      {   :at_least => 1, 
+          :at_most => 10000,  
+          :start_at => 2.weeks.ago,
+          :end_at => 1.day.ago,
+          :limit => 10,
+          :order => "items.name desc"
+      })
+
+Supported Options are: 
+
+  :at\_least  - Only show records with at least this many votes. 
+  :at\_most   - Only show records with fewer than this many votes
+  :start\_at  - Only return votes in the total count that are cast after this date
+  :end\_at    - Only return votes in the total count that are cast before this date
+  :limit      - The maximum number of voteables to return. Setting this to 10 will return the top 10 voted objects
+  :order      - The way you want the voteables sequenced. Defaults to the vote count for the object 
+
+This will select the Items with between 1 and 10,000 votes, the votes having been cast within the last two weeks (not including today), then display the 10 last items in an alphabetical list.
+
+#### More low level querying
+
 ActiveRecord models that act as voteable can be queried for the positive votes, negative votes, and a total vote count by using the votes\_for, votes\_against, and votes\_count methods respectively. Here is an example:
 
     positiveVoteCount = m.votes_for
