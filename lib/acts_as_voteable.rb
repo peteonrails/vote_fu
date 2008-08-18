@@ -21,7 +21,7 @@ module Juixe
         
         # Calculate the vote counts for all voteables of my type.
         def tally(options = {})
-          find(:all, options_for_tally(options.merge({ })))
+          find(:all, options_for_tally(options.merge({:order =>"count DESC" })))
         end
 
         # 
