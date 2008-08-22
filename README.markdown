@@ -1,16 +1,27 @@
 vote_fu
 =======
 
-Allows an arbitrary number of entites (including Users) to vote on models. Adapted from act\_as\_voteable. Differences from acts\_as\_voteable include: 
+Allows an arbitrary number of entites (including Users) to vote on models. 
+
+### Mixins
+This plugin introduces three mixins to your recipe book: 
+
+1. **acts\_as\_voteable** : Intended for content objects like Posts, Comments, etc. 
+2. **acts\_as\_voter** : Intended for voting entities, like Users. 
+3. **has\_karma**  : Intended for voting entities, or other objects that own the things you're voting on.
+
+### Inspiration
+
+This plugin started as an adaptation / update of act\_as\_voteable. It has grown different from that plugin in several ways: 
 
 1. You can specify the model name that initiates votes. 
 2. You can, with a little tuning, have more than one entity type vote on more than one model type. 
 3. Adds "acts\_as\_voter" behavior to the initiator of votes.
 4. Introduces some newer Rails features like named\_scope and :polymorphic keywords
-
+5. Adds "has\_karma" mixin for identifying key content contributors
 
 Install
-_______
+=======
 
 Run the following command:
 
@@ -22,7 +33,9 @@ Create a new rails migration using the generator:
 	
  
 Usage
-_____ 
+=====
+
+## Getting Started
 
 ### Make your ActiveRecord model act as voteable.
 
@@ -59,6 +72,31 @@ The old acts\_as\_voteable syntax is still supported:
 
 ### Querying votes
 
+#### Tallying Votes
+
+You can easily retrieve voteable object collections based on the properties of their votes:	
+
+    @items = Item.tally(
+      {  :at_least => 1, 
+          :at_most => 10000,  
+          :start_at => 2.weeks.ago,
+          :end_at => 1.day.ago,
+          :limit => 10,
+          :order => "items.name desc"
+      })
+
+This will select the Items with between 1 and 10,000 votes, the votes having been cast within the last two weeks (not including today), then display the 10 last items in an alphabetical list.
+
+##### Tally Options:
+    :start_at    - Restrict the votes to those created after a certain time
+    :end_at      - Restrict the votes to those created before a certain time
+    :conditions  - A piece of SQL conditions to add to the query
+    :limit       - The maximum number of voteables to return
+    :order       - A piece of SQL to order by. Eg 'votes.count desc' or 'voteable.created_at desc'
+    :at_least    - Item must have at least X votes
+    :at_most     - Item may not have more than X votes
+
+#### Lower level queries
 ActiveRecord models that act as voteable can be queried for the positive votes, negative votes, and a total vote count by using the votes\_for, votes\_against, and votes\_count methods respectively. Here is an example:
 
     positiveVoteCount = m.votes_for
@@ -92,7 +130,24 @@ You can chain these together to make interesting queries:
     # Show all of Pete's recent votes for a certain Post, in descending order (newest first)
     @pete_recent_votes_on_post = Vote.for_voter(pete).for_voteable(post).recent(7.days.ago).descending
 
-Credits
+### Experimental: Voteable Object Owner Karma
+I have just introduced the "has\_karma" mixin to this package. It aims to assign a karma score to the owners of voteable objects. This is designed to allow you to see which users are submitting the most highly voted content. Currently, karma is only "positive". That is, +1 votes add to karma, but -1 votes do not detract from it. 
+
+    class User 
+      has_many :posts
+      has_karma :posts
+    end
+    
+    class Post
+      acts_as_voteable
+    end
+    
+    # in your view, you can then do this: 
+    Karma: <%= @user.karma %>
+  
+This feature is in alpha, but useful enough that I'm releasing it. 
+
+### Credits
 _______
 [Juixe  - The original ActsAsVoteable plugin inspired this code.][1]
 
@@ -101,7 +156,7 @@ _______
 [1]: http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
 [2]: http://github.com/jackdempsey/acts_as_commentable/tree/master
 
-More
+### More
 ____
 
 [Documentation from the original acts\_as\_voteable plugin][3]

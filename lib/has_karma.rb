@@ -24,10 +24,7 @@ module PeteOnRails
       # This module contains class methods
       module SingletonMethods
         
-        def karma_voteable
-          
-        end
-        
+        ## Not yet implemented. Don't use it!
         # Find the most popular users
         def find_most_karmic
           find(:all)
