@@ -11,4 +11,7 @@ class Vote < ActiveRecord::Base
   
   attr_accessible :vote
 
+  # Uncomment this to limit users to a single vote on each item. 
+  # validates_uniqueness_of :voteable_id, :scope => [:voteable_type, :voter_type, :voter_id]
+
 end
