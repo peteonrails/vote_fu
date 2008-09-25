@@ -147,7 +147,14 @@ I have just introduced the "has\_karma" mixin to this package. It aims to assign
   
 This feature is in alpha, but useful enough that I'm releasing it. 
 
-### Credits
+Consideration
+=============
+If you like this software and use it, please consider recommending me on Working With Rails. 
+I don't want donations: a simple up-vote would make my day. My profile is: http://www.workingwithrails.com/person/12521-peter-jackson
+To go directly to the "Recommend Me" screen: http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson
+
+
+Credits
 _______
 [Juixe  - The original ActsAsVoteable plugin inspired this code.][1]
 
@@ -156,9 +163,11 @@ _______
 [1]: http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
 [2]: http://github.com/jackdempsey/acts_as_commentable/tree/master
 
-### More
+More
 ____
 
 [Documentation from the original acts\_as\_voteable plugin][3]
 
 [3]: http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
+
+Copyright (c) 2008 Peter Jackson, released under the MIT license
