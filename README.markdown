@@ -147,6 +147,18 @@ I have just introduced the "has\_karma" mixin to this package. It aims to assign
   
 This feature is in alpha, but useful enough that I'm releasing it. 
 
+### One vote per user!
+If you want to limit your users to a single vote on each item, take a look in lib/vote.rb. 
+
+  # Uncomment this to limit users to a single vote on each item. 
+  # validates_uniqueness_of :voteable_id, :scope => [:voteable_type, :voter_type, :voter_id]
+
+And if you want that enforced at the database level, look in the generated migration for your voteable:
+
+  # If you want to enfore "One Person, One Vote" rules in the database, uncomment the index below
+  # add_index :votes, ["voter_id", "voter_type", "voteable_id", "voteable_type"], :unique => true, :name => "uniq_one_vote_only"
+
+
 Consideration
 =============
 If you like this software and use it, please consider recommending me on Working With Rails. 
