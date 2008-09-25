@@ -150,8 +150,8 @@ This feature is in alpha, but useful enough that I'm releasing it.
 Consideration
 =============
 If you like this software and use it, please consider recommending me on Working With Rails. 
-I don't want donations: a simple up-vote would make my day. My profile is: http://www.workingwithrails.com/person/12521-peter-jackson
-To go directly to the "Recommend Me" screen: http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson
+I don't want donations: a simple up-vote would make my day. My profile is: [http://www.workingwithrails.com/person/12521-peter-jackson][4]
+To go directly to the "Recommend Me" screen: [http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson][5]
 
 
 Credits
@@ -169,5 +169,7 @@ ____
 [Documentation from the original acts\_as\_voteable plugin][3]
 
 [3]: http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
+[4]: http://www.workingwithrails.com/person/12521-peter-jackson
+[5]: http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson
 
 Copyright (c) 2008 Peter Jackson, released under the MIT license
