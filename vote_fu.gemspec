@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "vote_fu"
-  s.version = "0.0.4"
+  s.version = "0.0.5"
   s.date = "2008-11-17"
   s.summary = "Voting for ActiveRecord with multiple vote sources and advanced features."
   s.email = "pete@peteonrails.com"
@@ -11,10 +11,10 @@ Gem::Specification.new do |s|
   s.files = [ "CHANGELOG.markdown",
               "MIT-LICENSE",
               "README.markdown",
-              "generators/voteable",
-              "generators/voteable/voteable_generator.rb",
-              "generators/voteable/templates",
-              "generators/voteable/templates/migration.rb",
+              "generators/vote_fu",
+              "generators/vote_fu/vote_fu_generator.rb",
+              "generators/vote_fu/templates",
+              "generators/vote_fu/templates/migration.rb",
               "init.rb",
               "lib/vote_fu.rb",
               "lib/acts_as_voteable.rb",
