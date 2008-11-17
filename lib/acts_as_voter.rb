@@ -27,7 +27,7 @@ module PeteOnRails
         #       user.vote_count()      # All votes
         
         def vote_count(for_or_against = "all")
-          where = (for_or_against = "all") ? 
+          where = (for_or_against == "all") ? 
             ["voter_id = ? AND voter_type = ?", id, self.class.name ] : 
             ["voter_id = ? AND voter_type = ? AND vote = ?", id, self.class.name, for_or_against ]
                         
