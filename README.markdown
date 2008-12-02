@@ -157,6 +157,16 @@ And if you want that enforced at the database level, look in the generated migra
     # If you want to enfore "One Person, One Vote" rules in the database, uncomment the index below
     # add_index :votes, ["voter_id", "voter_type", "voteable_id", "voteable_type"], :unique => true, :name => "uniq_one_vote_only"
 
+### Example Application
+
+There is now a reference application available. Due to overwhelming demand for example 
+code and kickstart guides, I have open-sourced MyQuotable.com in order to provide an 
+easy-to-follow example of how to use VoteFu with RESTful Authentication, JRails, and 
+other popular plugins. To get the example code: 
+
+    git clone git://github.com/peteonrails/myquotable.git
+
+There will be a screencast coming soon too. Contact me if you want to help.
 
 Consideration
 =============

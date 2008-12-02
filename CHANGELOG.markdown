@@ -4,6 +4,7 @@
 * Merge in nagybence's updates that make the code usable as a Gem in addition to being a Rails plugin. 
 * Thanks for the bugfixes and proofreading, nagybence and maddox!
 * Updated the gemplugin support to be compatible with maddox and nagybence's changes. 
+* Added details on the MyQuotable reference application. 
 
 2008-07-20
 ==========

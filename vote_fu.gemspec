@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
               "lib/has_karma.rb",
               "lib/models/vote.rb",
               "lib/controllers/votes_controller.rb",
-              "test/voteable_test.rb",
+              "test/vote_fu_test.rb",
               "examples/votes_controller.rb",
               "examples/users_controller.rb",
               "examples/voteables_controller.rb",
