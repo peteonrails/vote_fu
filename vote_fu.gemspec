@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = "vote_fu"
-  s.version = "0.0.6"
-  s.date = "2008-11-17"
+  s.version = "0.0.7"
+  s.date = "2008-12-02"
   s.summary = "Voting for ActiveRecord with multiple vote sources and advanced features."
   s.email = "pete@peteonrails.com"
   s.homepage = "http://blog.peteonrails.com/vote-fu"
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
               "examples/voteable.html.erb",
               "examples/votes/_voteable_vote.html.erb",
               "examples/votes/create.rjs",
-              "examples/routes.rb"
+              "examples/routes.rb", 
+              "rails/init.rb"
   ]
 end
