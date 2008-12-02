@@ -182,7 +182,6 @@ Credits
 
 #### Contributors
 
-
 * Bence Nagy, Budapest, Hungary
 * Jon Maddox, Richmond, Virginia, USA
 
@@ -196,12 +195,16 @@ Credits
 [2]: http://github.com/jackdempsey/acts_as_commentable/tree/master
 
 More
-____
+====
+
+Support: [Use my blog for support.][6]
+
 
 [Documentation from the original acts\_as\_voteable plugin][3]
 
 [3]: http://www.juixe.com/techknow/index.php/2006/06/24/acts-as-voteable-rails-plugin/
 [4]: http://www.workingwithrails.com/person/12521-peter-jackson
 [5]: http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson
+[6]: http://blog.peteonrails.com
 
 Copyright (c) 2008 Peter Jackson, released under the MIT license
