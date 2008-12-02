@@ -1,2 +1,1 @@
-require File.dirname(__FILE__) + "/rails/init"
-
+require 'vote_fu'
