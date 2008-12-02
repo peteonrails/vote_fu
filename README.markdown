@@ -171,12 +171,23 @@ There will be a screencast coming soon too. Contact me if you want to help.
 Consideration
 =============
 If you like this software and use it, please consider recommending me on Working With Rails. 
+
 I don't want donations: a simple up-vote would make my day. My profile is: [http://www.workingwithrails.com/person/12521-peter-jackson][4]
+
 To go directly to the "Recommend Me" screen: [http://www.workingwithrails.com/recommendation/new/person/12521-peter-jackson][5]
 
 
 Credits
-_______
+=======
+
+#### Contributors
+
+
+* Bence Nagy, Budapest, Hungary
+* Jon Maddox, Richmond, Virginia, USA
+
+#### Other works
+
 [Juixe  - The original ActsAsVoteable plugin inspired this code.][1]
 
 [Xelipe - This plugin is heavily influenced by Acts As Commentable.][2]
