@@ -65,9 +65,7 @@ module PeteOnRails
         end
 
         def vote(voteable, vote)
-          vote = Vote.new(:vote => vote)
-          voteable.votes << vote
-          self.votes     << vote
+          vote = Vote.new(:vote => vote, :voteable => voteable, :voter => self)
           vote.save
         end
 
