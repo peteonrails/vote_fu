@@ -29,7 +29,7 @@ Run the following command:
 	
 Create a new rails migration using the generator:
 
-    ./script/generate voteable VoteableModel
+    ./script/generate vote_fu VoteableModel
  
 Usage
 =====
