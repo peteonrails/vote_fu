@@ -37,15 +37,15 @@ module PeteOnRails
                 
         def voted_for?(voteable)
            0 < Vote.count(:all, :conditions => [
-                   "voter_id = ? AND voter_type = ? AND vote = TRUE AND voteable_id = ? AND voteable_type = ?",
-                   self.id, self.class.name, voteable.id, voteable.class.name
+                   "voter_id = ? AND voter_type = ? AND vote = ? AND voteable_id = ? AND voteable_type = ?",
+                   self.id, self.class.name, true, voteable.id, voteable.class.name
                    ])
          end
 
          def voted_against?(voteable)
            0 < Vote.count(:all, :conditions => [
-                   "voter_id = ? AND voter_type = ? AND vote = FALSE AND voteable_id = ? AND voteable_type = ?",
-                   self.id, self.class.name, voteable.id, voteable.class.name
+                   "voter_id = ? AND voter_type = ? AND vote = ? AND voteable_id = ? AND voteable_type = ?",
+                   self.id, self.class.name, false, voteable.id, voteable.class.name
                    ])
          end
 
