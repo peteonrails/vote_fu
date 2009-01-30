@@ -35,12 +35,12 @@ module PeteOnRails
       # This module contains instance methods
       module InstanceMethods
         def karma(options = {})
-          # count the total number of votes on all of the voteable objects that are related to this object
-          self.karma_voteable.sum(:vote, options_for_karma(options))          
+          # count the total number of votes on all of the voteable objects that are related to this object       
+          self.karma_voteable.find(:all, options_for_karma(options)).length
         end
         
         def options_for_karma (options = {})
-            conditions = ["u.id = ?" , self[:id] ]
+            conditions = ["u.id = ? AND vote = ?" , self[:id] , true]
             joins = ["inner join votes v on #{karma_voteable.table_name}.id = v.voteable_id", "inner join #{self.class.table_name} u on u.id = #{karma_voteable.name.tableize}.#{self.class.name.foreign_key}"]            
             { :joins => joins.join(" "), :conditions => conditions }.update(options)          
         end
