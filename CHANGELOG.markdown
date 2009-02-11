@@ -1,3 +1,7 @@
+2009-02-11
+==========
+* Merge in xlash's bugfix for PostgreSQL and his has\_karma patch for multi-model support. 
+
 2008-12-02
 ==========
 * Merge in maddox's README typo fix and his ActiveSupport.Dependency patch
