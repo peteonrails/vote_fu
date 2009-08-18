@@ -35,7 +35,7 @@ Install the gem:
     rake gems:install
 
 ### Create vote_fu migration
-Create a new rails migration using your new vote_fu generator:
+Create a new rails migration using your new vote_fu generator (Note: "VoteableModel" is the name of the model on which you would like votes to be cast, e.g. Comment):
     ./script/generate vote_fu VoteableModel
 
 Run the migration:
