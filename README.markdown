@@ -20,18 +20,15 @@ This plugin started as an adaptation / update of act\_as\_voteable. It has grown
 4. Introduces some newer Rails features like named\_scope and :polymorphic keywords
 5. Adds "has\_karma" mixin for identifying key content contributors
 
-Install
-=======
+Installation
+============
+Use either the plugin or the gem installation method depending on your preference. If you're not sure, the plugin method is simpler. Whichever you choose, create the migration afterward and run it to create the required model.
 
 ### Via plugin
 
 Run the following command:
 
     ./script/plugin install git://github.com/peteonrails/vote_fu.git 
-	
-Create a new rails migration using the generator:
-
-    ./script/generate vote_fu VoteableModel
 
 ### Via gem
 
@@ -42,7 +39,16 @@ Add the following to your application's environment.rb:
 And install the gem with the command:
 
     rake gems:install
- 
+
+### Create vote_fu migration
+
+Create a new rails migration using the generator:
+
+    ./script/generate vote_fu VoteableModel
+
+Run the migration:
+    rake db:migrate
+
 Usage
 =====
 
