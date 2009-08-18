@@ -25,25 +25,17 @@ Installation
 Use either the plugin or the gem installation method depending on your preference. If you're not sure, the plugin method is simpler. Whichever you choose, create the migration afterward and run it to create the required model.
 
 ### Via plugin
-
-Run the following command:
-
-    ./script/plugin install git://github.com/peteonrails/vote_fu.git 
+   ./script/plugin install git://github.com/peteonrails/vote_fu.git 
 
 ### Via gem
-
 Add the following to your application's environment.rb:
-
     config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
 
-And install the gem with the command:
-
+Install the gem:
     rake gems:install
 
 ### Create vote_fu migration
-
-Create a new rails migration using the generator:
-
+Create a new rails migration using your new vote_fu generator:
     ./script/generate vote_fu VoteableModel
 
 Run the migration:
