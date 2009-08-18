@@ -25,7 +25,7 @@ Installation
 Use either the plugin or the gem installation method depending on your preference. If you're not sure, the plugin method is simpler. Whichever you choose, create the migration afterward and run it to create the required model.
 
 ### Via plugin
-   ./script/plugin install git://github.com/peteonrails/vote_fu.git 
+    ./script/plugin install git://github.com/peteonrails/vote_fu.git 
 
 ### Via gem
 Add the following to your application's environment.rb:
