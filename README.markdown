@@ -31,9 +31,13 @@ Create a new rails migration using the generator:
 
     ./script/generate vote_fu VoteableModel
 
-If you prefer to install vote_fu as a gem, you can add the following to your application's environment.rb and run "rake gems:install" to install:
+If you prefer to install vote_fu as a gem, add the following to your application's environment.rb:
 
     config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
+
+And install the gem with the command:
+
+    rake gems:install
  
 Usage
 =====
