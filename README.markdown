@@ -23,6 +23,8 @@ This plugin started as an adaptation / update of act\_as\_voteable. It has grown
 Install
 =======
 
+### Via plugin
+
 Run the following command:
 
     ./script/plugin install git://github.com/peteonrails/vote_fu.git 
@@ -31,7 +33,9 @@ Create a new rails migration using the generator:
 
     ./script/generate vote_fu VoteableModel
 
-If you prefer to install vote_fu as a gem, add the following to your application's environment.rb:
+### Via gem
+
+Add the following to your application's environment.rb:
 
     config.gem "peteonrails-vote_fu", :lib => 'vote_fu', :source => 'http://gems.github.com'
 
