@@ -143,6 +143,95 @@ Heavily favors recent content.
 VoteFu::Algorithms::HackerNews.call(post, gravity: 1.8)
 ```
 
+## Turbo Integration
+
+VoteFu comes with Turbo Streams support out of the box.
+
+### View Helpers
+
+```erb
+<%# Reddit-style upvote/downvote widget %>
+<%= vote_widget @post %>
+
+<%# Simple like button %>
+<%= like_button @photo %>
+
+<%# Scoped voting %>
+<%= vote_widget @review, scope: :quality %>
+<%= vote_widget @review, scope: :helpfulness %>
+```
+
+### ViewComponents
+
+For more control, use the ViewComponents directly:
+
+```erb
+<%# Vote widget with all options %>
+<%= render VoteFu::VoteWidgetComponent.new(
+  voteable: @post,
+  voter: current_user,
+  variant: :vertical,
+  upvote_label: "👍",
+  downvote_label: "👎"
+) %>
+
+<%# Star rating %>
+<%= render VoteFu::StarRatingComponent.new(
+  voteable: @product,
+  voter: current_user,
+  show_average: true,
+  show_count: true
+) %>
+
+<%# Emoji reactions (Slack/GitHub style) %>
+<%= render VoteFu::ReactionBarComponent.new(
+  voteable: @comment,
+  voter: current_user,
+  reactions: [
+    { emoji: "👍", label: "Like", scope: "like" },
+    { emoji: "❤️", label: "Love", scope: "love" },
+    { emoji: "🎉", label: "Celebrate", scope: "celebrate" }
+  ]
+) %>
+```
+
+### Controller
+
+VoteFu provides a complete controller for handling votes:
+
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  mount VoteFu::Engine => "/vote_fu"
+end
+```
+
+The controller responds to:
+- `POST /vote_fu/votes` - Create/update a vote
+- `POST /vote_fu/votes/toggle` - Toggle vote (upvote ↔ remove)
+- `DELETE /vote_fu/votes/:id` - Remove a vote
+
+All endpoints return Turbo Streams for seamless updates.
+
+## Styles
+
+Import the default styles:
+
+```css
+/* app/assets/stylesheets/application.css */
+@import "vote_fu/votes";
+```
+
+Or use CSS variables to customize:
+
+```css
+:root {
+  --vote-fu-upvote-color: #ff6314;
+  --vote-fu-downvote-color: #7193ff;
+  --vote-fu-like-color: #e0245e;
+}
+```
+
 ## Configuration
 
 ```ruby
