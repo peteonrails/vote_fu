@@ -1,8 +1,5 @@
 # VoteFu
 
-[![Gem Version](https://badge.fury.io/rb/vote_fu.svg)](https://badge.fury.io/rb/vote_fu)
-[![CI](https://github.com/peteonrails/vote_fu/actions/workflows/ci.yml/badge.svg)](https://github.com/peteonrails/vote_fu/actions)
-
 Modern voting for Rails 8+ with first-class Turbo, Stimulus, and ActionCable support.
 
 ## Features
