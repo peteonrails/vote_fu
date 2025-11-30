@@ -165,3 +165,227 @@
 .vote-fu-widget--large .vote-fu-count {
   font-size: 1.25rem;
 }
+
+/* ================================================
+   STAR RATING COMPONENT
+   ================================================ */
+
+.vote-fu-star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vote-fu-stars {
+  display: inline-flex;
+  gap: 0.125rem;
+}
+
+.vote-fu-star,
+.vote-fu-star-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #d1d5db;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.vote-fu-star-btn:hover {
+  transform: scale(1.2);
+}
+
+.vote-fu-star-filled,
+.vote-fu-star-btn.vote-fu-star-filled {
+  color: #fbbf24;
+}
+
+.vote-fu-star-half {
+  color: #fbbf24;
+}
+
+.vote-fu-star-rating--readonly .vote-fu-star {
+  cursor: default;
+}
+
+.vote-fu-star-info {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.vote-fu-star-average {
+  font-weight: 600;
+}
+
+.vote-fu-star-count {
+  color: #9ca3af;
+}
+
+/* Star Rating Sizes */
+.vote-fu-star-rating--small .vote-fu-star,
+.vote-fu-star-rating--small .vote-fu-star-btn {
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.875rem;
+}
+
+.vote-fu-star-rating--large .vote-fu-star,
+.vote-fu-star-rating--large .vote-fu-star-btn {
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.75rem;
+}
+
+/* ================================================
+   REACTION BAR COMPONENT
+   ================================================ */
+
+.vote-fu-reaction-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vote-fu-reactions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.vote-fu-reaction-wrapper {
+  display: inline-flex;
+}
+
+.vote-fu-reaction-wrapper--empty {
+  display: none;
+}
+
+.vote-fu-reaction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  background: #f9fafb;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.vote-fu-reaction:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.vote-fu-reaction--active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.vote-fu-reaction--readonly {
+  cursor: default;
+}
+
+.vote-fu-reaction-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.vote-fu-reaction-count {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.vote-fu-reaction--active .vote-fu-reaction-count {
+  color: #3b82f6;
+}
+
+.vote-fu-reaction-users {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vote-fu-add-reaction {
+  display: inline-flex;
+}
+
+.vote-fu-add-reaction-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px dashed #d1d5db;
+  border-radius: 9999px;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.vote-fu-add-reaction-btn:hover {
+  border-color: #9ca3af;
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+/* Dark Mode for Stars and Reactions */
+@media (prefers-color-scheme: dark) {
+  .vote-fu-star,
+  .vote-fu-star-btn {
+    color: #4b5563;
+  }
+
+  .vote-fu-star-filled,
+  .vote-fu-star-btn.vote-fu-star-filled {
+    color: #fbbf24;
+  }
+
+  .vote-fu-star-info {
+    color: #9ca3af;
+  }
+
+  .vote-fu-reaction {
+    background: #1f2937;
+    border-color: #374151;
+    color: #e5e7eb;
+  }
+
+  .vote-fu-reaction:hover {
+    background: #374151;
+    border-color: #4b5563;
+  }
+
+  .vote-fu-reaction--active {
+    background: #1e3a5f;
+    border-color: #3b82f6;
+  }
+
+  .vote-fu-reaction-count {
+    color: #9ca3af;
+  }
+
+  .vote-fu-add-reaction-btn {
+    border-color: #4b5563;
+    color: #6b7280;
+  }
+
+  .vote-fu-add-reaction-btn:hover {
+    background: #1f2937;
+    border-color: #6b7280;
+    color: #9ca3af;
+  }
+}
