@@ -5,7 +5,7 @@ require_relative "lib/vote_fu/version"
 Gem::Specification.new do |spec|
   spec.name = "vote_fu"
   spec.version = VoteFu::VERSION
-  spec.authors = ["Peter Jackson"]
+  spec.authors = ["Peter Jackson", "Cosmin Radoi", "Bence Nagy", "Rob Maddox", "Kandada Boggu", "Wojciech Wnętrzak"]
   spec.email = ["pete@peteonrails.com"]
 
   spec.summary = "Modern voting for Rails 8+ with Turbo, Stimulus, and ActionCable"
