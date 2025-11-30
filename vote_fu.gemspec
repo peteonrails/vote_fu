@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
     Wilson Score ranking, Reddit Hot algorithm, counter caches, and
     first-class Hotwire support with Turbo Streams and Stimulus controllers.
   DESC
-  spec.homepage = "https://github.com/peteonrails/vote_fu"
+  spec.homepage = "https://votefu.dev"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2.0"
 
