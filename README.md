@@ -1,6 +1,6 @@
 # VoteFu
 
-[![VoteFu - Modern Voting for Rails 8+](https://votefu.dev/og-image.png)](https://votefu.dev)
+[![VoteFu - Modern Voting for Rails 8+](docs/og-image.png)](https://votefu.dev)
 
 **The original Rails voting gem, reborn for the modern era.**
 
