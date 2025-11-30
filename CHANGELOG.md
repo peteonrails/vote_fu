@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.1] - 2024-11-30
+
+### Changed
+- Added legacy VoteFu contributors to gem authors
+- Fixed gemspec homepage to point to votefu.dev
+
 ## [2.0.0] - 2024-11-29
 
 Complete rewrite of VoteFu for modern Rails applications.
