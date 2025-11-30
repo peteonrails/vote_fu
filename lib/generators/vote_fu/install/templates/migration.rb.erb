@@ -1,0 +1,41 @@
+# frozen_string_literal: true
+
+class CreateVoteFuVotes < ActiveRecord::Migration<%= migration_version %>
+  def change
+    create_table :vote_fu_votes do |t|
+      # Polymorphic voter (User, Admin, etc.)
+      t.references :voter, polymorphic: true, null: false
+
+      # Polymorphic voteable (Post, Comment, etc.)
+      t.references :voteable, polymorphic: true, null: false
+
+      # Integer value: 1 for up, -1 for down, 1-5 for stars, etc.
+      t.integer :value, null: false, default: 1
+
+      # Optional scope for multiple voting contexts on same voteable
+      # Example: "quality", "helpfulness", etc.
+      t.string :scope
+
+      t.timestamps
+    end
+
+    # Unique constraint: one vote per voter per voteable per scope
+    add_index :vote_fu_votes,
+              %i[voter_type voter_id voteable_type voteable_id scope],
+              unique: true,
+              name: "idx_vote_fu_unique_vote"
+
+    # Index for querying all votes on a voteable
+    add_index :vote_fu_votes,
+              %i[voteable_type voteable_id],
+              name: "idx_vote_fu_voteable"
+
+    # Index for querying a voter's history
+    add_index :vote_fu_votes,
+              %i[voter_type voter_id created_at],
+              name: "idx_vote_fu_voter_history"
+
+    # Index for recent votes queries
+    add_index :vote_fu_votes, :created_at
+  end
+end

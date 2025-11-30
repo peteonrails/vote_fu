@@ -1,36 +1,40 @@
-Gem::Specification.new do |s|
-  s.name = "vote_fu"
-  s.version = "0.0.11"
-  s.date = "2009-02-11"
-  s.summary = "Voting for ActiveRecord with multiple vote sources and advanced features."
-  s.email = "pete@peteonrails.com"
-  s.homepage = "http://blog.peteonrails.com/vote-fu"
-  s.description = "VoteFu provides the ability to have multiple voting entities on an arbitrary number of models in ActiveRecord."
-  s.has_rdoc = false
-  s.authors = ["Peter Jackson", "Cosmin Radoi", "Bence Nagy", "Rob Maddox"]
-  s.files = [ "CHANGELOG.markdown",
-              "MIT-LICENSE",
-              "README.markdown",
-              "generators/vote_fu",
-              "generators/vote_fu/vote_fu_generator.rb",
-              "generators/vote_fu/templates",
-              "generators/vote_fu/templates/migration.rb",
-              "init.rb",
-              "lib/vote_fu.rb",
-              "lib/acts_as_voteable.rb",
-              "lib/acts_as_voter.rb",
-              "lib/has_karma.rb",
-              "lib/models/vote.rb",
-              "lib/controllers/votes_controller.rb",
-              "test/vote_fu_test.rb",
-              "examples/votes_controller.rb",
-              "examples/users_controller.rb",
-              "examples/voteables_controller.rb",
-              "examples/voteable.rb",
-              "examples/voteable.html.erb",
-              "examples/votes/_voteable_vote.html.erb",
-              "examples/votes/create.rjs",
-              "examples/routes.rb", 
-              "rails/init.rb"
-  ]
+# frozen_string_literal: true
+
+require_relative "lib/vote_fu/version"
+
+Gem::Specification.new do |spec|
+  spec.name = "vote_fu"
+  spec.version = VoteFu::VERSION
+  spec.authors = ["Peter Jackson"]
+  spec.email = ["pete@peteonrails.com"]
+
+  spec.summary = "Modern voting for Rails 8+ with Turbo, Stimulus, and ActionCable"
+  spec.description = <<~DESC
+    VoteFu provides flexible voting capabilities for Rails applications.
+    Features include up/down voting, star ratings, scoped voting contexts,
+    Wilson Score ranking, Reddit Hot algorithm, counter caches, and
+    first-class Hotwire support with Turbo Streams and Stimulus controllers.
+  DESC
+  spec.homepage = "https://github.com/peteonrails/vote_fu"
+  spec.license = "MIT"
+  spec.required_ruby_version = ">= 3.2.0"
+
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/peteonrails/vote_fu"
+  spec.metadata["changelog_uri"] = "https://github.com/peteonrails/vote_fu/blob/main/CHANGELOG.md"
+  spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.files = Dir.chdir(__dir__) do
+    Dir["{app,config,lib}/**/*", "MIT-LICENSE", "README.md", "CHANGELOG.md"]
+  end
+
+  spec.add_dependency "rails", ">= 7.2", "< 9.0"
+  spec.add_dependency "turbo-rails", ">= 2.0"
+
+  spec.add_development_dependency "rspec-rails", "~> 7.0"
+  spec.add_development_dependency "factory_bot_rails", "~> 6.4"
+  spec.add_development_dependency "sqlite3", "~> 2.0"
+  spec.add_development_dependency "rubocop", "~> 1.68"
+  spec.add_development_dependency "rubocop-rails", "~> 2.27"
+  spec.add_development_dependency "rubocop-rspec", "~> 3.2"
 end
