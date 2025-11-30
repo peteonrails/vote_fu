@@ -1,5 +1,7 @@
 # VoteFu
 
+[![VoteFu - Modern Voting for Rails 8+](https://votefu.dev/og-image.png)](https://votefu.dev)
+
 **The original Rails voting gem, reborn for the modern era.**
 
 VoteFu was first released in 2008 for Rails 2. Over the years it was forked countless times—most notably as ThumbsUp—as the Rails ecosystem evolved and the original fell behind. While the forks kept pace with Rails 3, 4, and 5, none made the leap to embrace Hotwire.
