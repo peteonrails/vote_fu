@@ -260,17 +260,30 @@ module VoteFu
           self.class.update_counters(id, **updates) if updates.any?
         end
 
-        # Broadcast vote updates via Turbo Streams
-        def broadcast_vote_update
+        # Broadcast vote updates via Turbo Streams and ActionCable
+        def broadcast_vote_update(vote: nil, action: :updated)
           return unless vote_fu_voteable_options[:broadcasts]
-          return unless respond_to?(:broadcast_replace_to)
 
-          broadcast_replace_to(
-            [self, :votes],
-            target: "#{self.class.name.underscore}_#{id}_vote_widget",
-            partial: "vote_fu/votes/widget",
-            locals: { voteable: self }
-          )
+          # Turbo Streams broadcast
+          if respond_to?(:broadcast_replace_to)
+            broadcast_replace_to(
+              [self, :votes],
+              target: "#{self.class.name.underscore}_#{id}_vote_widget",
+              partial: "vote_fu/votes/widget",
+              locals: { voteable: self }
+            )
+          end
+
+          # ActionCable broadcast (for custom JS handling)
+          if defined?(VoteFu::VotesChannel)
+            VoteFu::VotesChannel.broadcast_vote_update(self, vote: vote, action: action)
+          end
+        end
+
+        # Subscribe to vote updates via ActionCable
+        def vote_stream_name(scope: nil)
+          base = "vote_fu:#{self.class.name}:#{id}"
+          scope.present? ? "#{base}:#{scope}" : base
         end
       end
     end
