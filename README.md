@@ -1,6 +1,10 @@
 # VoteFu
 
-Modern voting for Rails 8+ with first-class Turbo, Stimulus, and ActionCable support.
+**The original Rails voting gem, reborn for the modern era.**
+
+VoteFu was first released in 2008 for Rails 2. Over the years it was forked countless times—most notably as ThumbsUp—as the Rails ecosystem evolved and the original fell behind. While the forks kept pace with Rails 3, 4, and 5, none made the leap to embrace Hotwire.
+
+VoteFu 2.0 changes that. This is a complete ground-up rewrite that leapfrogs every fork with first-class Turbo Streams, ViewComponents, Stimulus controllers, and ActionCable support. No more bolting modern UI onto legacy architecture. VoteFu is back, and it's ready for Rails 8.
 
 ## Features
 
@@ -246,8 +250,13 @@ end
 
 ## History
 
-VoteFu was originally created in 2008 for Rails 2. It was forked as ThumbsUp in 2010.
-This is VoteFu 2.0, a complete rewrite for modern Rails.
+VoteFu was created in 2008 when Rails 2 was cutting-edge. It became one of the go-to voting solutions for Rails applications, powering upvotes, ratings, and karma systems across thousands of apps.
+
+When Rails 3 arrived with breaking changes, VoteFu fell behind. In 2010, it was forked as [ThumbsUp](https://github.com/bouchard/thumbs_up), which carried the torch through Rails 3, 4, 5, and beyond. Other forks emerged too—acts_as_votable, votable, and more—each taking the original idea in different directions.
+
+But none of them embraced Hotwire. As Rails evolved toward Turbo and Stimulus, the voting gem ecosystem stayed stuck in the jQuery era, requiring manual JavaScript for real-time updates.
+
+**VoteFu 2.0 is a complete rewrite.** Zero legacy code. Built from scratch for Rails 7.2+ with Turbo Streams, ViewComponents, and ActionCable baked in. The original is back—and it's leapfrogged every fork.
 
 ## License
 
