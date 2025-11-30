@@ -454,6 +454,17 @@ section h2 {
   color: var(--color-text);
 }
 
+/* Customization Section */
+.customization {
+  background: var(--color-bg);
+}
+
+.code-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.variable { color: #60a5fa; }
+
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {
@@ -481,7 +492,8 @@ section h2 {
     grid-template-columns: 1fr;
   }
 
-  .code-grid {
+  .code-grid,
+  .code-grid-2 {
     grid-template-columns: 1fr;
   }
 
