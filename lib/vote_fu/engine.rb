@@ -21,11 +21,25 @@ if defined?(Rails::Engine)
         end
       end
 
+      # Include helpers in ActionView
+      initializer "vote_fu.helpers" do
+        ActiveSupport.on_load(:action_view) do
+          include VoteFu::VotesHelper
+        end
+      end
+
       # Set up importmap for Stimulus controllers
       initializer "vote_fu.importmap", before: "importmap" do |app|
         if app.config.respond_to?(:importmap)
           app.config.importmap.paths << Engine.root.join("config/importmap.rb")
           app.config.importmap.cache_sweepers << Engine.root.join("app/javascript")
+        end
+      end
+
+      # Append engine assets to asset pipeline
+      initializer "vote_fu.assets" do |app|
+        if app.config.respond_to?(:assets)
+          app.config.assets.paths << Engine.root.join("app/assets/stylesheets")
         end
       end
 

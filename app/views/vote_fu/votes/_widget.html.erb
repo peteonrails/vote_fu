@@ -1,0 +1,85 @@
+<%#
+  Vote Widget Partial
+
+  Required locals:
+    - voteable: The voteable record
+    - voter: The current voter (can be nil)
+
+  Optional locals:
+    - scope: Vote scope (default: nil)
+    - action: The action that just occurred (:created, :updated, :removed)
+    - show_count: Whether to show vote count (default: true)
+    - upvote_label: Custom upvote label (default: "▲")
+    - downvote_label: Custom downvote label (default: "▼")
+%>
+<%
+  scope ||= nil
+  action ||= nil
+  show_count = local_assigns.fetch(:show_count, true)
+  upvote_label = local_assigns.fetch(:upvote_label, "▲")
+  downvote_label = local_assigns.fetch(:downvote_label, "▼")
+
+  vote = voter ? voteable.received_votes.find_by(voter: voter, scope: scope) : nil
+  voted_up = vote&.up?
+  voted_down = vote&.down?
+
+  scope_suffix = scope.present? ? "_#{scope}" : ""
+  dom_id_base = "vote_fu_#{voteable.model_name.singular}_#{voteable.id}#{scope_suffix}"
+%>
+
+<div id="<%= dom_id_base %>_widget"
+     class="vote-fu-widget <%= "vote-fu-voted-up" if voted_up %> <%= "vote-fu-voted-down" if voted_down %>"
+     data-controller="vote-fu"
+     data-vote-fu-voteable-type-value="<%= voteable.class.name %>"
+     data-vote-fu-voteable-id-value="<%= voteable.id %>"
+     data-vote-fu-scope-value="<%= scope %>"
+     data-vote-fu-voted-value="<%= vote.present? %>"
+     data-vote-fu-direction-value="<%= vote&.direction %>">
+
+  <% if voter %>
+    <%= form_with url: vote_fu.toggle_votes_path, method: :post, data: { turbo_stream: true, action: "submit->vote-fu#vote" } do |f| %>
+      <%= f.hidden_field :voteable_type, value: voteable.class.name %>
+      <%= f.hidden_field :voteable_id, value: voteable.id %>
+      <%= f.hidden_field :scope, value: scope %>
+      <%= f.hidden_field :direction, value: :up %>
+
+      <button type="submit"
+              class="vote-fu-btn vote-fu-upvote <%= "vote-fu-active" if voted_up %>"
+              data-vote-fu-target="upvoteBtn"
+              title="<%= voted_up ? "Remove upvote" : "Upvote" %>">
+        <%= upvote_label %>
+      </button>
+    <% end %>
+
+    <% if show_count %>
+      <span id="<%= dom_id_base %>_count"
+            class="vote-fu-count"
+            data-vote-fu-target="count">
+        <%= voteable.plusminus(scope: scope) %>
+      </span>
+    <% end %>
+
+    <%= form_with url: vote_fu.toggle_votes_path, method: :post, data: { turbo_stream: true, action: "submit->vote-fu#vote" } do |f| %>
+      <%= f.hidden_field :voteable_type, value: voteable.class.name %>
+      <%= f.hidden_field :voteable_id, value: voteable.id %>
+      <%= f.hidden_field :scope, value: scope %>
+      <%= f.hidden_field :direction, value: :down %>
+
+      <button type="submit"
+              class="vote-fu-btn vote-fu-downvote <%= "vote-fu-active" if voted_down %>"
+              data-vote-fu-target="downvoteBtn"
+              title="<%= voted_down ? "Remove downvote" : "Downvote" %>">
+        <%= downvote_label %>
+      </button>
+    <% end %>
+  <% else %>
+    <%# Guest view - no voting buttons, just count %>
+    <span class="vote-fu-btn vote-fu-upvote vote-fu-disabled"><%= upvote_label %></span>
+    <% if show_count %>
+      <span id="<%= dom_id_base %>_count" class="vote-fu-count">
+        <%= voteable.plusminus(scope: scope) %>
+      </span>
+    <% end %>
+    <span class="vote-fu-btn vote-fu-downvote vote-fu-disabled"><%= downvote_label %></span>
+  <% end %>
+</div>

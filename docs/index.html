@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoteFu - Modern Voting for Rails 8+</title>
+  <meta name="description" content="The definitive voting gem for Rails 8+. Turbo-native, ViewComponent-ready, with built-in ranking algorithms. Zero dependencies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">&#x1F44A;</span>
+        <span>VoteFu</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#comparison">Compare</a>
+        <a href="#code">Code</a>
+        <a href="https://github.com/peteonrails/vote_fu" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">Coming Soon for Rails 8+</div>
+      <h1>Voting infrastructure<br>for modern Rails</h1>
+      <p class="hero-subtitle">
+        VoteFu 2.0 brings first-class Turbo Streams, ViewComponents, and Stimulus controllers
+        to your voting system. Built-in ranking algorithms. Zero external dependencies.
+      </p>
+      <div class="hero-actions">
+        <a href="https://github.com/peteonrails/vote_fu" class="btn btn-primary">
+          View on GitHub
+        </a>
+        <a href="#code" class="btn btn-secondary">
+          See the Code
+        </a>
+      </div>
+      <div class="hero-code">
+        <pre><code><span class="comment"># Gemfile</span>
+gem <span class="string">'vote_fu'</span>, <span class="string">'~> 2.0'</span></code></pre>
+      </div>
+    </div>
+  </header>
+
+  <section class="features" id="features">
+    <div class="container">
+      <h2>Built for how Rails works today</h2>
+      <p class="section-subtitle">Not a port from 2010. Designed from the ground up for Rails 8, Hotwire, and modern patterns.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x26A1;</div>
+          <h3>Turbo-Native</h3>
+          <p>Every vote action returns Turbo Stream responses by default. Real-time updates via ActionCable broadcasts. No custom JavaScript required.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F9E9;</div>
+          <h3>ViewComponents</h3>
+          <p>Drop-in components for vote buttons, star ratings, and reaction bars. Fully customizable with your own CSS or design system.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F3AF;</div>
+          <h3>Stimulus Controllers</h3>
+          <p>Optimistic UI updates out of the box. Votes feel instant while the server confirms in the background.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4CA;</div>
+          <h3>Built-in Algorithms</h3>
+          <p>Wilson Score, Reddit Hot, HackerNews, and Bayesian Average ranking—all included. No external gems needed.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F50D;</div>
+          <h3>Scoped Voting</h3>
+          <p>Same voter can cast multiple independent votes in different contexts. Rate helpfulness AND quality on the same item.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F680;</div>
+          <h3>Performance First</h3>
+          <p>Dual counter caches, database-level constraints, and optimized queries. Sub-50ms response times.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison" id="comparison">
+    <div class="container">
+      <h2>How VoteFu 2.0 compares</h2>
+      <p class="section-subtitle">The voting gem landscape hasn't kept up with Rails. We're changing that.</p>
+
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>ThumbsUp</th>
+              <th>Votable</th>
+              <th class="highlight">VoteFu 2.0</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rails 8 Support</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Yes</td>
+            </tr>
+            <tr>
+              <td>Vote Values</td>
+              <td>Boolean</td>
+              <td>Integer</td>
+              <td class="highlight">Integer</td>
+            </tr>
+            <tr>
+              <td>Turbo Streams</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Native</td>
+            </tr>
+            <tr>
+              <td>ActionCable</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Built-in</td>
+            </tr>
+            <tr>
+              <td>ViewComponents</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Included</td>
+            </tr>
+            <tr>
+              <td>Stimulus Controllers</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Included</td>
+            </tr>
+            <tr>
+              <td>Counter Cache</td>
+              <td class="no">No</td>
+              <td>Running total</td>
+              <td class="yes highlight">Both</td>
+            </tr>
+            <tr>
+              <td>Scoped Voting</td>
+              <td class="no">No</td>
+              <td class="yes">Yes</td>
+              <td class="yes highlight">Yes</td>
+            </tr>
+            <tr>
+              <td>Wilson Score</td>
+              <td>External gem</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Built-in</td>
+            </tr>
+            <tr>
+              <td>Hot Ranking</td>
+              <td class="no">No</td>
+              <td class="no">No</td>
+              <td class="yes highlight">Built-in</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="code-examples" id="code">
+    <div class="container">
+      <h2>Simple, expressive API</h2>
+      <p class="section-subtitle">Everything you need, nothing you don't.</p>
+
+      <div class="code-grid">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Setup your models</span>
+          </div>
+          <pre><code><span class="keyword">class</span> <span class="class">User</span> < ApplicationRecord
+  <span class="method">include</span> VoteFu::Voter
+<span class="keyword">end</span>
+
+<span class="keyword">class</span> <span class="class">Post</span> < ApplicationRecord
+  <span class="method">include</span> VoteFu::Voteable
+<span class="keyword">end</span></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Cast votes</span>
+          </div>
+          <pre><code><span class="comment"># Upvote / Downvote</span>
+user.vote_on(post, <span class="symbol">value:</span> <span class="number">1</span>)
+user.vote_on(post, <span class="symbol">value:</span> <span class="number">-1</span>)
+
+<span class="comment"># Star ratings</span>
+user.vote_on(post, <span class="symbol">value:</span> <span class="number">5</span>)
+
+<span class="comment"># Scoped voting</span>
+user.vote_on(comment, <span class="symbol">value:</span> <span class="number">1</span>, <span class="symbol">scope:</span> <span class="symbol">:helpful</span>)
+user.vote_on(comment, <span class="symbol">value:</span> <span class="number">5</span>, <span class="symbol">scope:</span> <span class="symbol">:quality</span>)</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">Query and rank</span>
+          </div>
+          <pre><code><span class="comment"># Built-in scopes</span>
+Post.most_voted
+Post.highest_rated
+Post.controversial
+
+<span class="comment"># Ranking algorithms</span>
+Post.by_wilson_score
+Post.by_reddit_hot
+Post.by_hacker_news_rank</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-title">ViewComponents</span>
+          </div>
+          <pre><code><span class="comment">&lt;!-- Vote buttons --&gt;</span>
+<span class="tag">&lt;%=</span> render VoteFu::VoteWidgetComponent.new(
+  <span class="symbol">voteable:</span> @post,
+  <span class="symbol">voter:</span> current_user
+) <span class="tag">%&gt;</span>
+
+<span class="comment">&lt;!-- Star rating --&gt;</span>
+<span class="tag">&lt;%=</span> render VoteFu::StarRatingComponent.new(
+  <span class="symbol">voteable:</span> @post,
+  <span class="symbol">max_stars:</span> <span class="number">5</span>
+) <span class="tag">%&gt;</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready for Rails 8</h2>
+      <p>VoteFu 2.0 is currently in development. Star the repo to follow progress.</p>
+      <div class="cta-actions">
+        <a href="https://github.com/peteonrails/vote_fu" class="btn btn-primary btn-large">
+          Star on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon">&#x1F44A;</span>
+          <span>VoteFu</span>
+        </div>
+        <p>Originally created in 2008. Revived for modern Rails by <a href="https://peterjackson.dev">Peter Jackson</a>.</p>
+        <div class="footer-links">
+          <a href="https://github.com/peteonrails/vote_fu">GitHub</a>
+          <a href="https://peterjackson.dev">Author</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

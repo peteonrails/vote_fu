@@ -1,0 +1,29 @@
+<%#
+  Vote Count Partial
+
+  Required locals:
+    - voteable: The voteable record
+
+  Optional locals:
+    - scope: Vote scope (default: nil)
+    - format: Display format - :plusminus, :total, :percentage (default: :plusminus)
+%>
+<%
+  scope ||= nil
+  format = local_assigns.fetch(:format, :plusminus)
+  scope_suffix = scope.present? ? "_#{scope}" : ""
+  dom_id_base = "vote_fu_#{voteable.model_name.singular}_#{voteable.id}#{scope_suffix}"
+
+  value = case format
+          when :total then voteable.votes_total(scope: scope)
+          when :percentage then "#{voteable.percent_for(scope: scope)}%"
+          when :split then "+#{voteable.votes_for(scope: scope)} / -#{voteable.votes_against(scope: scope)}"
+          else voteable.plusminus(scope: scope)
+          end
+%>
+
+<span id="<%= dom_id_base %>_count"
+      class="vote-fu-count"
+      data-vote-fu-target="count">
+  <%= value %>
+</span>

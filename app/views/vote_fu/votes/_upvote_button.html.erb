@@ -1,0 +1,40 @@
+<%#
+  Standalone Upvote Button Partial
+
+  Required locals:
+    - voteable: The voteable record
+
+  Optional locals:
+    - voter: The current voter
+    - scope: Vote scope (default: nil)
+    - label: Button label (default: "▲")
+    - class: Additional CSS classes
+%>
+<%
+  scope ||= nil
+  voter ||= nil
+  label = local_assigns.fetch(:label, "▲")
+  css_class = local_assigns.fetch(:class, "")
+
+  vote = voter ? voteable.received_votes.find_by(voter: voter, scope: scope) : nil
+  voted_up = vote&.up?
+%>
+
+<% if voter %>
+  <%= form_with url: vote_fu.toggle_votes_path, method: :post, data: { turbo_stream: true } do |f| %>
+    <%= f.hidden_field :voteable_type, value: voteable.class.name %>
+    <%= f.hidden_field :voteable_id, value: voteable.id %>
+    <%= f.hidden_field :scope, value: scope %>
+    <%= f.hidden_field :direction, value: :up %>
+
+    <button type="submit"
+            class="vote-fu-btn vote-fu-upvote <%= "vote-fu-active" if voted_up %> <%= css_class %>"
+            title="<%= voted_up ? "Remove upvote" : "Upvote" %>">
+      <%= label %>
+    </button>
+  <% end %>
+<% else %>
+  <span class="vote-fu-btn vote-fu-upvote vote-fu-disabled <%= css_class %>">
+    <%= label %>
+  </span>
+<% end %>

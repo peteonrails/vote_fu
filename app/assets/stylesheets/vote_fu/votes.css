@@ -1,0 +1,167 @@
+/*
+ * VoteFu Default Styles
+ *
+ * These styles are optional and can be overridden in your application.
+ * Import with: @import "vote_fu/votes";
+ */
+
+/* Vote Widget Container */
+.vote-fu-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.vote-fu-like-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Vote Buttons */
+.vote-fu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.vote-fu-btn:hover:not(.vote-fu-disabled) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.vote-fu-btn:active:not(.vote-fu-disabled) {
+  transform: scale(0.95);
+}
+
+/* Active States */
+.vote-fu-upvote.vote-fu-active {
+  color: #ff6314;
+  background-color: rgba(255, 99, 20, 0.1);
+}
+
+.vote-fu-downvote.vote-fu-active {
+  color: #7193ff;
+  background-color: rgba(113, 147, 255, 0.1);
+}
+
+.vote-fu-like.vote-fu-active {
+  color: #e0245e;
+}
+
+/* Disabled State */
+.vote-fu-btn.vote-fu-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Vote Count */
+.vote-fu-count {
+  min-width: 2rem;
+  padding: 0.25rem;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Count Update Animation */
+.vote-fu-count-updated {
+  animation: vote-fu-pulse 0.3s ease-out;
+}
+
+@keyframes vote-fu-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Error Display */
+.vote-fu-error {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  color: #dc2626;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+/* Container States */
+.vote-fu-widget.vote-fu-voted-up .vote-fu-count {
+  color: #ff6314;
+}
+
+.vote-fu-widget.vote-fu-voted-down .vote-fu-count {
+  color: #7193ff;
+}
+
+.vote-fu-like-widget.vote-fu-liked .vote-fu-count {
+  color: #e0245e;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .vote-fu-btn:hover:not(.vote-fu-disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .vote-fu-upvote.vote-fu-active {
+    background-color: rgba(255, 99, 20, 0.2);
+  }
+
+  .vote-fu-downvote.vote-fu-active {
+    background-color: rgba(113, 147, 255, 0.2);
+  }
+
+  .vote-fu-error {
+    color: #fca5a5;
+    background-color: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.3);
+  }
+}
+
+/* Compact Variant */
+.vote-fu-widget--compact .vote-fu-btn {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875rem;
+}
+
+.vote-fu-widget--compact .vote-fu-count {
+  min-width: 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* Vertical Variant (Reddit-style) */
+.vote-fu-widget--vertical {
+  flex-direction: column;
+}
+
+/* Large Variant */
+.vote-fu-widget--large .vote-fu-btn {
+  min-width: 3rem;
+  min-height: 3rem;
+  font-size: 1.5rem;
+}
+
+.vote-fu-widget--large .vote-fu-count {
+  font-size: 1.25rem;
+}

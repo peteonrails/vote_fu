@@ -1,0 +1,67 @@
+<%#
+  Like Button Partial (Single Button Style)
+
+  For simple "like" functionality without downvotes.
+
+  Required locals:
+    - voteable: The voteable record
+
+  Optional locals:
+    - voter: The current voter
+    - scope: Vote scope (default: nil)
+    - liked_label: Button label when liked (default: "♥")
+    - unliked_label: Button label when not liked (default: "♡")
+    - show_count: Whether to show like count (default: true)
+    - class: Additional CSS classes
+%>
+<%
+  scope ||= nil
+  voter ||= nil
+  liked_label = local_assigns.fetch(:liked_label, "♥")
+  unliked_label = local_assigns.fetch(:unliked_label, "♡")
+  show_count = local_assigns.fetch(:show_count, true)
+  css_class = local_assigns.fetch(:class, "")
+
+  vote = voter ? voteable.received_votes.find_by(voter: voter, scope: scope) : nil
+  liked = vote&.up?
+  like_count = voteable.votes_for(scope: scope)
+
+  scope_suffix = scope.present? ? "_#{scope}" : ""
+  dom_id_base = "vote_fu_#{voteable.model_name.singular}_#{voteable.id}#{scope_suffix}"
+%>
+
+<div id="<%= dom_id_base %>_widget"
+     class="vote-fu-like-widget <%= "vote-fu-liked" if liked %> <%= css_class %>"
+     data-controller="vote-fu"
+     data-vote-fu-voteable-type-value="<%= voteable.class.name %>"
+     data-vote-fu-voteable-id-value="<%= voteable.id %>"
+     data-vote-fu-scope-value="<%= scope %>">
+
+  <% if voter %>
+    <%= form_with url: vote_fu.toggle_votes_path, method: :post, data: { turbo_stream: true, action: "submit->vote-fu#vote" } do |f| %>
+      <%= f.hidden_field :voteable_type, value: voteable.class.name %>
+      <%= f.hidden_field :voteable_id, value: voteable.id %>
+      <%= f.hidden_field :scope, value: scope %>
+      <%= f.hidden_field :direction, value: :up %>
+
+      <button type="submit"
+              class="vote-fu-btn vote-fu-like <%= "vote-fu-active" if liked %>"
+              data-vote-fu-target="likeBtn"
+              title="<%= liked ? "Unlike" : "Like" %>">
+        <%= liked ? liked_label : unliked_label %>
+      </button>
+    <% end %>
+  <% else %>
+    <span class="vote-fu-btn vote-fu-like vote-fu-disabled">
+      <%= unliked_label %>
+    </span>
+  <% end %>
+
+  <% if show_count %>
+    <span id="<%= dom_id_base %>_count"
+          class="vote-fu-count"
+          data-vote-fu-target="count">
+      <%= like_count %>
+    </span>
+  <% end %>
+</div>
